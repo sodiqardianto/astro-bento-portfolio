@@ -19,7 +19,7 @@
     "@astrojs/solid-js": "^5.0.10",
     "@astrojs/svelte": "^7.0.13",
     "@iconify-json/ri": "^1.2.5",
-    "@rive-app/canvas": "^2.26.5",
+    "@rive-app/canvas": "^2.27.2",
     "astro": "^5.7.12",
     "astro-icon": "^1.1.5",
     "astro-robots-txt": "^1.0.0",
