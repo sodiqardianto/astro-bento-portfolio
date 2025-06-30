@@ -7,11 +7,28 @@ import Pulse from "./Pulse.astro";
   <div class="flex justify-between w-full items-start mb-2">
     <div class="flex flex-col">
       <h2>Now</h2>
-      <a href="https://sive.rs/nowff" target="_blank">
+      <a href="#" target="_blank">
         <span class="text-xs text-darkslate-300 cursor-pointer">what's that ?</span>
       </a>
     </div>
     <Pulse />
   </div>
-  <p class="text-xs">Currently working fulltime</p>
+  <p class="text-xs now-text">Open to remote and freelance work.</p>
 </Card>
+
+<style>
+  /* Make now text black in dark mode (default state) */
+  .now-text {
+    color: #ffffff !important;
+  }
+
+  /* Make now text white in light mode */
+  :global(.light-mode) .now-text {
+    color: #000000 !important;
+  }
+
+  /* Ensure bold text maintains proper contrast */
+  .now-text b {
+    color: inherit;
+  }
+</style>

@@ -4,33 +4,91 @@ import { LINKS } from "../lib/constants";
 ---
 
 <Card colSpan="md:col-span-1" rowSpan="md:row-span-4">
-  <div class="h-full">
+  <div class="h-full contacts-text">
     <header class="flex items-center">
-      <h1 class="text-white text-xl font-bold">
+      <h1 class="text-xl font-bold contacts-title">
         Let's start working together!
       </h1>
     </header>
     <address class="flex flex-col mt-4">
       <h2 class="text-darkslate-300">Contact Details</h2>
-      <p class="text-sm">contact@gianmarcocavallo.com</p>
-      <p>Italy</p>
+      <p class="text-sm">gmail@sodiqardianto.com</p>
+      <p>Jakarta, Indonesia</p>
     </address>
     <div class="flex flex-col mt-4 w-fit">
       <h2 class="text-darkslate-300">Socials</h2>
       <ul>
         <li>
-          <a href={LINKS.linkedin} target="_blank">Linkedin</a>
-        </li>
-        <li>
           <a href={LINKS.github} target="_blank">Github</a>
         </li>
         <li>
-          <a href={LINKS.medium} target="_blank">Medium</a>
+          <a href={LINKS.linkedin} target="_blank">Linkedin</a>
         </li>
         <li>
-          <a href={LINKS.discord} target="_blank">Discord</a>
+          <a href={LINKS.instagram} target="_blank">Instagram</a>
+        </li>
+        <li>
+          <a href={LINKS.youtube} target="_blank">Youtube</a>
         </li>
       </ul>
     </div>
   </div>
 </Card>
+
+<style>
+  /* Dark mode styling (default) */
+  .contacts-text {
+    color: #ffffff !important;
+  }
+
+  .contacts-title {
+    color: #ffffff !important;
+  }
+
+  .contacts-text h2 {
+    color: #e3e3e3 !important;
+  }
+
+  .contacts-text p {
+    color: #e3e3e3 !important;
+  }
+
+  .contacts-text a {
+    color: #ffffff !important;
+    text-decoration: underline;
+  }
+
+  .contacts-text a:hover {
+    color: var(--primary-500) !important;
+  }
+
+  /* Light mode styling */
+  :global(.light-mode) .contacts-text {
+    color: #000000 !important;
+  }
+
+  :global(.light-mode) .contacts-title {
+    color: #111111 !important;
+  }
+
+  :global(.light-mode) .contacts-text h2 {
+    color: #383838 !important;
+  }
+
+  :global(.light-mode) .contacts-text p {
+    color: #383838 !important;
+  }
+
+  :global(.light-mode) .contacts-text a {
+    color: #111111 !important;
+  }
+
+  :global(.light-mode) .contacts-text a:hover {
+    color: var(--primary-500) !important;
+  }
+
+  /* Ensure bold text maintains proper contrast */
+  .contacts-text b {
+    color: inherit;
+  }
+</style>

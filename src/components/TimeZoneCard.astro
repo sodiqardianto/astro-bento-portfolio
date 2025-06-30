@@ -1,17 +1,17 @@
 ---
-import { getCurrentTimeInItaly, formatTimeTo12H } from "../lib/helpers";
+import { getCurrentTimeInJakarta, formatTimeTo12H } from "../lib/helpers";
 import Card from "./Card/index.astro";
 ---
 
 <script>
   import { onCleanup, onMount } from "solid-js";
-  import { formatTimeTo12H, getCurrentTimeInItaly } from "../lib/helpers";
+  import { formatTimeTo12H, getCurrentTimeInJakarta } from "../lib/helpers";
 
   let interval: ReturnType<typeof setInterval>;
 
   function updateClock() {
     const timeDisplay = document.getElementById("timeDisplay");
-    const now = getCurrentTimeInItaly();
+    const now = getCurrentTimeInJakarta();
 
     if (timeDisplay) {
       timeDisplay.textContent = formatTimeTo12H(now);
@@ -31,15 +31,32 @@ import Card from "./Card/index.astro";
 
 <Card colSpan="lg:col-span-1" rowSpan="md:row-span-1">
   <div
-    class="flex gap-2 text-2xl items-center justify-center h-full font-serif"
+    class="flex gap-2 text-2xl items-center justify-center h-full font-serif timezone-text"
   >
     <time
       datetime=""
       id="timeDisplay"
       class="whitespace-nowrap flex items-center"
     >
-      {formatTimeTo12H(getCurrentTimeInItaly())}
+      {formatTimeTo12H(getCurrentTimeInJakarta())}
     </time>
-    CET
+    <span class="text-sm">Asia/Jakarta</span>
   </div>
 </Card>
+
+<style>
+  /* Make timezone text black in dark mode (default state) */
+  .timezone-text {
+    color: #ffffff !important;
+  }
+
+  /* Make timezone text white in light mode */
+  :global(.light-mode) .timezone-text {
+    color: #000000 !important;
+  }
+
+  /* Ensure bold text maintains proper contrast */
+  .timezone-text b {
+    color: inherit;
+  }
+</style>

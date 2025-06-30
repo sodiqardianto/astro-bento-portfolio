@@ -33,31 +33,32 @@ import DesignWorksCard from "../components/DesignWorksCard.astro";
 </script>
 
 <Layout
-  description="I'm a developer based in Italy, passionate about user experience and specializing in engaging animations and micro-interactions. My primary tools of choice include: JavaScript, React, Solid.js, Astro, Svelte, and Node.js."
-  title="Gianmarco Cavallo - Freelance front-end Developer"
->
-  <main
+  description="I'm a fullstack developer based in Jakarta, Indonesia, with a strong backend foundation using Laravel, and a growing focus on frontend technologies like React and Astro. Passionate about building elegant, scalable solutions for the web."
+  title="Sodiq Ardianto – Fullstack Developer"
+/>
+
+<main
     class="text-white m-auto p-2 grid gap-2 max-w-6xl overflow-hidden relative w-full sm:p-4 sm:gap-2 md:grid-cols-2 md:gap-3 md:p-6 lg:h-screen lg:grid-rows-8 lg:grid-cols-4 lg:gap-4 lg:max-h-[800px]"
   >
     <IntroCard />
     <AboutMe />
     <ContactsCard />
     <TimeZone />
-    <DesignWorksCard />
+    <!-- <DesignWorksCard /> -->
     <Now />
-    <Card
-      href="playground"
-      colSpan="md:col-span-1"
-      rowSpan="md:row-span-1"
-      title="Playground"
-    />
     <Card
       href="/blog"
       colSpan="md:col-span-1"
-      rowSpan="md:row-span-1 "
+      rowSpan="md:row-span-3"
       title="Blog"
     />
     <Card
+      href="portfolio"
+      colSpan="md:col-span-1"
+      rowSpan="md:row-span-2"
+      title="Portfolio & Project"
+    />
+    <!-- <Card
       colSpan="md:col-span-1 overflow-visible"
       rowSpan="md:row-span-1"
       padding="p-0"
@@ -78,7 +79,7 @@ import DesignWorksCard from "../components/DesignWorksCard.astro";
           </div>
         </div>
       </a>
-      <!-- <div class="flex items-center box-border h-full w-full">
+      <div class="flex items-center box-border h-full w-full">
         <h3 class="my-6 ml-6 text-xl font-bold">Works</h3>
         <div class="flex-1 flex justify-start pl-4 items-center">
           <img
@@ -89,9 +90,10 @@ import DesignWorksCard from "../components/DesignWorksCard.astro";
             src="https://media.tenor.com/dt1etVruHGAAAAAi/rylsee-tooshytorap.gif"
           />
         </div>
-      </div> -->
-    </Card>
-    <Card
+      </div>
+    </Card> -->
+    <ThemeChangeCard />
+    <!-- <Card
       colorText="text-neutral-900"
       colSpan="md:col-span-1"
       href="travel"
@@ -102,17 +104,32 @@ import DesignWorksCard from "../components/DesignWorksCard.astro";
         <Globe client:media="(min-width: 768px)" />
         <Globe client:media="(max-width: 768px)" isStatic={true} />
       </div>
-    </Card>
-    <ThemeChangeCard />
-
+    </Card> -->
     <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
-      <p class="text-xs">
+      <p class="text-xs footer-text">
         © 2024 · Crafted with ♥️ using <a
           class="text-red-500"
           href="https://astro.build/"
           target="_blank">Astro</a
-        > by Gianmarco.
+        > by Sodiq Ardianto
       </p>
     </Card>
   </main>
 </Layout>
+
+<style>
+  /* Make footer text black in dark mode (default state) */
+  .footer-text {
+    color: #ffffff !important;
+  }
+
+  /* Make footer text white in light mode */
+  :global(.light-mode) .footer-text {
+    color: #000000 !important;
+  }
+
+  /* Ensure bold text maintains proper contrast */
+  .footer-text b {
+    color: inherit;
+  }
+</style>

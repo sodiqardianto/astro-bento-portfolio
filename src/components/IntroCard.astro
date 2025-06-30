@@ -12,26 +12,22 @@ import MemojiAvatar from "../assets/me.webp";
   <div class="flex w-full h-full">
     <div class="flex flex-col justify-between md:max-h-[300px] gap-4">
       <div class="flex flex-col h-full">
-        <h6 class="text-sm font-light m-0 text-darkslate-300">welcome</h6>
-
+        <div class="flex justify-between items-center mb-2">
+          <h6 class="text-sm font-light m-0 text-darkslate-300">welcome</h6>
+        </div>
         <p class="sr-only">
-          Hi, I'm Gianmarco Cavallo, a software developer with strong focus on
-          the user experience, animations and micro interactions. Feel free to
-          reach out to me if you have any projects in mind, or just to say
-          hello.
+          Hi, I'm Sodiq Ardianto, a Fullstack Developer specializing in Laravel for backend and React/Next.js for frontend. I focus on building scalable systems, clean code architecture, and delivering seamless user experiences. Feel free to reach out if you have any projects or just want to connect.
         </p>
-        <p aria-hidden="true" class="m-0 font-light text-md">
+        <p aria-hidden="true" class="m-0 font-light text-md intro-text">
           <span>
-            Hi, I'm <b class="font-bold">Gianmarco Cavallo</b>, a software
-            developer with strong focus on the user experience, animations and
-            micro interactions.
+            Hi, I'm <b class="font-bold">Sodiq Ardianto</b>, a fullstack developer specializing in Laravel for backend and React/Next.js for frontend.
           </span>
           <br />
           <span class="block mt-2">
-            Feel free to reach out to me if you have any projects in mind, or
-            just to say hello.
+            I focus on building scalable systems, clean code architecture, and delivering seamless user experiences. Feel free to reach out if you have any projects or just want to connect.
           </span>
         </p>
+
       </div>
       <div class="flex flex-col lg:flex-row gap-2 lg:gap-4">
         <div class="flex gap-2 lg:gap-4">
@@ -55,11 +51,11 @@ import MemojiAvatar from "../assets/me.webp";
               >
             </Button>
           </a>
-          <a href={LINKS.dribble} aria-label="dribble profile" target="_blank">
-            <Button aria-label="dribble profile">
-              <Icon name="ri:dribbble-fill" class="h-6" />
-              <span class="sr-only" data-umami-event="Dribble button"
-                >Dribble Profile</span
+          <a href={LINKS.instagram} aria-label="instagram profile" target="_blank">
+            <Button aria-label="instagram profile">
+              <Icon name="ri:instagram-fill" class="h-6" />
+              <span class="sr-only" data-umami-event="Instagram button"
+                >Instagram Profile</span
               >
             </Button>
           </a>
@@ -71,22 +67,88 @@ import MemojiAvatar from "../assets/me.webp";
               >
             </Button>
           </Tooltip>
+          <Button
+            id="dark-mode-toggle"
+            aria-label="Toggle dark mode"
+            data-umami-event="dark mode toggle"
+          >
+            <Icon name="ri:sun-line" class="h-4 w-4 dark-mode-icon sun-icon" />
+            <Icon name="ri:moon-line" class="h-4 w-4 dark-mode-icon moon-icon hidden" />
+          </Button>
         </div>
-        <Button aria-label="book a call" data-cal-link="ladvace">
+        <!-- <Button aria-label="book a call" data-cal-link="ladvace">
           <span
             data-umami-event="Book a call"
             data-cal-link="ladvace"
             class="font-bold whitespace-nowrap">Book a call</span
           >
-        </Button>
+        </Button> -->
       </div>
     </div>
     <Image
-    
+
       quality="max"
       src={MemojiAvatar}
       class="w-auto max-h-[300px] select-none absolute right-[-110px] bottom-[-20px] z-[-1] opacity-50 md:opacity-100 md:relative md:right-auto md:bottom-auto md:z-auto pointer-events-none"
-      alt="memoji of gianmarco"
+      alt="memoji of sodiq"
     />
   </div>
 </Card>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const darkModeToggle = document.getElementById("dark-mode-toggle");
+    const sunIcon = document.querySelector(".sun-icon");
+    const moonIcon = document.querySelector(".moon-icon");
+
+    // Check for saved theme preference or default to dark mode
+    const currentTheme = localStorage.getItem("darkMode") || "dark";
+
+    // Apply the theme on page load
+    if (currentTheme === "light") {
+      document.body.classList.add("light-mode");
+      sunIcon?.classList.add("hidden");
+      moonIcon?.classList.remove("hidden");
+    } else {
+      document.body.classList.remove("light-mode");
+      sunIcon?.classList.remove("hidden");
+      moonIcon?.classList.add("hidden");
+    }
+
+    // Toggle dark mode
+    darkModeToggle?.addEventListener("click", () => {
+      const isLightMode = document.body.classList.contains("light-mode");
+
+      if (isLightMode) {
+        // Switch to dark mode
+        document.body.classList.remove("light-mode");
+        localStorage.setItem("darkMode", "dark");
+        sunIcon?.classList.remove("hidden");
+        moonIcon?.classList.add("hidden");
+      } else {
+        // Switch to light mode
+        document.body.classList.add("light-mode");
+        localStorage.setItem("darkMode", "light");
+        sunIcon?.classList.add("hidden");
+        moonIcon?.classList.remove("hidden");
+      }
+    });
+  });
+</script>
+
+<style>
+  /* Make intro text black in dark mode (default state) */
+  .intro-text {
+    color: #ffffff !important;
+  }
+
+  /* Make intro text white in light mode */
+  :global(.light-mode) .intro-text {
+    color: #000000 !important;
+  }
+
+  /* Ensure bold text maintains proper contrast */
+  .intro-text b {
+    color: inherit;
+  }
+</style>

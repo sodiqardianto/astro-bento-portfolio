@@ -22,7 +22,15 @@ const { title, description } = Astro.props;
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const theme = localStorage.getItem("theme");
+    const darkMode = localStorage.getItem("darkMode");
 
     if (theme) document.body.classList.add(theme);
+
+    // Apply dark mode preference
+    if (darkMode === "light") {
+      document.body.classList.add("light-mode");
+    } else {
+      document.body.classList.remove("light-mode");
+    }
   });
 </script>

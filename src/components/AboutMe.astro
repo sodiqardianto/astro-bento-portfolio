@@ -3,36 +3,48 @@ import Card from "./Card/index.astro";
 ---
 
 <Card colSpan="md:col-span-1" rowSpan="md:row-span-6" title="About me">
-  <div class="flex flex-col gap-2">
+  <div class="flex flex-col gap-2 about-text">
     <p class="sr-only">
-      Hi, I'm Gianmarco, a front-end software developer from Italy. My primary
-      tools of choice includes: JavaScript, React, Solidjs, Astro, Svelte,
-      Nodejs. Beyond coding, I'm passionate about design, illustration,
-      animation and 3D modelling and traveling. An unusual hobby of mine is
-      collecting vintage passports, they're interesting pieces of history to me.
-      While I have some preferred tools, I always choose the best one for the
-      job, even if it's not on my usual list. My goal is to find the right
-      solution for each project.
+      Hi, I'm Sodiq Ardianto, a fullstack developer from Indonesia with a strong foundation in backend development using Laravel, and growing experience in frontend technologies like React and Next.js. I enjoy building scalable systems, crafting clean and maintainable code, and ensuring great user experiences. Outside of coding, I enjoy exploring new tech, refining internal tools, and learning better ways to ship and maintain software. I believe in choosing the right tools for the job and continuously improving through learning.
     </p>
     <div aria-hidden="true" class="text-sm font-light">
       <p class="text-sm font-light">
-        Hi, I'm Gianmarco, a front-end software developer from Italy.
+        Hi, I'm Sodiq Ardianto, a fullstack developer from Indonesia.
       </p>
       <br />
-      My primary tools of choice includes:
+      My primary tools of choice include:
       <ul class="list-disc list-inside">
-        <li>JavaScript</li>
+        <li>Laravel</li>
+        <li>PHP</li>
+        <li>MySQL</li>
         <li>React</li>
-        <li>Solidjs</li>
-        <li>Astro</li>
-        <li>Svelte</li>
-        <li>Nodejs</li>
+        <li>Next.js</li>
+        <li>Tailwind CSS</li>
       </ul>
     </div>
     <p class="text-sm font-light">
-      Beyond coding, I'm passionate about design, illustration, animation and 3D
-      modelling and traveling. An unusual hobby of mine is collecting vintage
-      passports, they're interesting pieces of history to me.
+      I focus on building robust backend systems and clean user interfaces. I'm
+      passionate about solving real-world problems through code, learning modern
+      technologies, and refining my workflows. Outside of development, I enjoy
+      exploring tools that improve developer experience and efficiency.
     </p>
   </div>
 </Card>
+
+
+<style>
+  /* Make about text black in dark mode (default state) */
+  .about-text {
+    color: #ffffff !important;
+  }
+
+  /* Make about text white in light mode */
+  :global(.light-mode) .about-text {
+    color: #000000 !important;
+  }
+
+  /* Ensure bold text maintains proper contrast */
+  .about-text b {
+    color: inherit;
+  }
+</style>

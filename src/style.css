@@ -21,6 +21,101 @@
   --primary-900: #891321;
 }
 
+/* Light mode theme */
+.light-mode {
+  --darkslate-50: #0b0b0b;
+  --darkslate-100: #0e0e0e;
+  --darkslate-200: #111111;
+  --darkslate-300: #6b6b6b;
+  --darkslate-400: #c9c9c9;
+  --darkslate-500: #e3e3e3;
+  --darkslate-600: #f0f0f0;
+  --darkslate-700: #f7f7f7;
+  --darkslate-800: #fafafa;
+  --darkslate-900: #ffffff;
+}
+
+/* Light mode specific adjustments */
+.light-mode body::before {
+  --line-color: theme("colors.darkslate.400");
+}
+
+/* Global dark mode text styling */
+body {
+  color: #ffffff;
+}
+
+.light-mode {
+  color: #111111;
+}
+
+/* Card content styling for dark mode consistency */
+.card {
+  color: inherit;
+}
+
+.light-mode .card {
+  color: #111111;
+}
+
+/* Ensure proper text contrast in both modes */
+.light-mode h1,
+.light-mode h2,
+.light-mode h3,
+.light-mode h4,
+.light-mode h5,
+.light-mode h6 {
+  color: #111111;
+}
+
+.light-mode p,
+.light-mode span,
+.light-mode div {
+  color: #383838;
+}
+
+/* Dark mode (default) headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #ffffff;
+}
+
+/* Dark mode (default) text */
+p,
+span {
+  color: #e3e3e3;
+}
+
+/* Tooltip styling - always maintain black background with white text */
+.tooltip-container {
+  background-color: #000000 !important;
+  border-color: var(--primary-500) !important;
+  color: #ffffff !important;
+}
+
+.tooltip-text {
+  color: #ffffff !important;
+}
+
+/* Ensure tooltip stays consistent in both modes */
+.light-mode .tooltip-container {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+.light-mode .tooltip-text {
+  color: #ffffff !important;
+}
+
+/* Tooltip arrow styling */
+.tooltip-container::after {
+  background-color: #000000 !important;
+}
+
 .yellow-theme {
   --primary-100: #fff9c4;
   --primary-200: #fff59d;
