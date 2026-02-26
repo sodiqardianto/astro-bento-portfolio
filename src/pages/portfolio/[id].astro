@@ -26,10 +26,25 @@ const { data } = project;
 ---
 
 <script>
-  import { animate, type AnimationSequence } from "motion";
+  import { stagger, animate, type AnimationSequence } from "motion";
   import { loaderAnimation } from "../../lib/constants";
 
-  animate([loaderAnimation] as AnimationSequence);
+  const animateItems = document.querySelectorAll(".portfolio-content > *");
+
+  const sequence = [
+    loaderAnimation,
+    [
+      animateItems,
+      { y: ["40%", "0%"], opacity: [0, 1] },
+      {
+        type: "spring",
+        at: "-0.5",
+        delay: stagger(0.1),
+      },
+    ],
+  ];
+
+  animate(sequence as AnimationSequence);
 </script>
 
 <Layout title={`${data.title} | Sodiq Ardianto`} description={data.description}>
@@ -43,7 +58,7 @@ const { data } = project;
       <Icon name="ri:arrow-left-line" class="w-4 h-4" /> Back to Portfolio
     </a>
 
-    <div class="max-w-4xl w-full">
+    <div class="portfolio-content max-w-4xl w-full">
       {/* Header */}
       <div class="mb-8">
         <div class="flex items-center gap-3 mb-4">
@@ -187,33 +202,9 @@ const { data } = project;
 </Layout>
 
 <style>
-  .back-btn {
-    color: #ffffff !important;
-  }
-
-  :global(.light-mode) .back-btn {
-    color: #ffffff !important;
-  }
-
   :global(.light-mode) h1,
   :global(.light-mode) h2 {
     color: #111111 !important;
-  }
-
-  :global(.light-mode) .text-white {
-    color: #111111 !important;
-  }
-
-  :global(.light-mode) .text-neutral-400 {
-    color: #6b6b6b !important;
-  }
-
-  :global(.light-mode) .text-neutral-300 {
-    color: #383838 !important;
-  }
-
-  :global(.light-mode) .text-neutral-500 {
-    color: #6b6b6b !important;
   }
 
   :global(.light-mode) .text-neutral-200 {

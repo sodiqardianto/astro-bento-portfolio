@@ -2,6 +2,8 @@
 import { Icon } from "astro-icon/components";
 import { formatDate } from "../lib/helpers";
 import BasicLayout from "./BasicLayout.astro";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
 type Props = {
   title: string;
@@ -9,18 +11,45 @@ type Props = {
   pubDate: Date;
   minutesRead: string;
   url: string;
+  image?: ImageMetadata;
+  imageAlt?: string;
 };
 
-const { title, description, pubDate, minutesRead, url } = Astro.props;
+const { title, description, pubDate, minutesRead, url, image, imageAlt } =
+  Astro.props;
 ---
+
+<script>
+  import { stagger, animate, type AnimationSequence } from "motion";
+  import { loaderAnimation } from "../lib/constants";
+
+  const animateItems = document.querySelectorAll(
+    ".blog-detail-content > *:not(.back-btn)",
+  );
+
+  const sequence = [
+    loaderAnimation,
+    [
+      animateItems,
+      { y: ["40%", "0%"], opacity: [0, 1] },
+      {
+        type: "spring",
+        at: "-0.5",
+        delay: stagger(0.1),
+      },
+    ],
+  ];
+
+  animate(sequence as AnimationSequence);
+</script>
 
 <BasicLayout description={description} page="blog" slug={url} title={title}>
   <main
-    class="mx-auto max-w-3xl w-full min-h-screen p-8 pb-20 text-neutral-100"
+    class="blog-detail-content mx-auto max-w-3xl w-full min-h-screen p-4 md:p-8 pt-32 pb-20 text-neutral-100"
   >
     <a
       href="/blog"
-      class="flex items-center gap-2 w-fit text-white bg-neutral-900 hover:bg-neutral-800 px-4 py-2 border-1 border-solid border-neutral-600 rounded-lg mb-8"
+      class="flex items-center gap-2 w-fit text-white bg-neutral-900 hover:bg-neutral-800 px-4 py-2 border-1 border-solid border-neutral-600 rounded-lg fixed top-10 left-10 z-50 back-btn"
     >
       <Icon name="ri:arrow-left-line" class="w-4 h-4" />Back to Posts
     </a>
@@ -31,6 +60,18 @@ const { title, description, pubDate, minutesRead, url } = Astro.props;
         <p>{minutesRead}</p>
       </div>
     </div>
+    {
+      image && (
+        <div class="hero-image-wrapper">
+          <Image
+            src={image}
+            alt={imageAlt ?? title}
+            quality="high"
+            class="hero-image"
+          />
+        </div>
+      )
+    }
     <article class="blog-content">
       <slot />
     </article>

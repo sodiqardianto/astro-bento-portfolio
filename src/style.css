@@ -74,6 +74,23 @@ body {
   color: #383838;
 }
 
+/* Global utility class overrides for light mode */
+.light-mode .text-white { color: #111111 !important; }
+.light-mode .text-neutral-100 { color: #111111 !important; }
+.light-mode .text-neutral-200 { color: #171717 !important; }
+.light-mode .text-neutral-300 { color: #383838 !important; }
+.light-mode .text-neutral-400 { color: #6b6b6b !important; }
+.light-mode .text-neutral-500 { color: #888888 !important; }
+
+/* Neutral Background overrides */
+.light-mode .bg-neutral-900 { 
+  background-color: #e3e3e3 !important; 
+  border-color: #c9c9c9 !important; 
+}
+.light-mode .bg-neutral-900:hover { 
+  background-color: #c9c9c9 !important; 
+}
+
 /* Dark mode (default) headings */
 h1,
 h2,

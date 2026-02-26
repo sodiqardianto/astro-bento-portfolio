@@ -5,7 +5,7 @@ import { LINKS } from "../lib/constants";
 import { Icon } from "astro-icon/components";
 import Tooltip from "./Tooltip/index";
 import { Image } from "astro:assets";
-import MemojiAvatar from "../assets/me.webp";
+import SodiqAvatar from "../assets/sodiq.png";
 ---
 
 <Card colSpan="md:col-span-3" rowSpan="md:row-span-4">
@@ -16,18 +16,25 @@ import MemojiAvatar from "../assets/me.webp";
           <h6 class="text-sm font-light m-0 text-darkslate-300">welcome</h6>
         </div>
         <p class="sr-only">
-          Hi, I'm Sodiq Ardianto, a Fullstack Developer specializing in Laravel for backend and React/Next.js for frontend. I focus on building scalable systems, clean code architecture, and delivering seamless user experiences. Feel free to reach out if you have any projects or just want to connect.
+          Hi, I'm Sodiq Ardianto, a Fullstack Developer specializing in Laravel
+          for backend and React/Next.js for frontend. I focus on building
+          scalable systems, clean code architecture, and delivering seamless
+          user experiences. Feel free to reach out if you have any projects or
+          just want to connect.
         </p>
         <p aria-hidden="true" class="m-0 font-light text-md intro-text">
           <span>
-            Hi, I'm <b class="font-bold">Sodiq Ardianto</b>, a fullstack developer specializing in Laravel for backend and React/Next.js for frontend.
+            Hi, I'm <b class="font-bold">Sodiq Ardianto</b>, a fullstack
+            developer specializing in Laravel for backend and React/Next.js for
+            frontend.
           </span>
           <br />
           <span class="block mt-2">
-            I focus on building scalable systems, clean code architecture, and delivering seamless user experiences. Feel free to reach out if you have any projects or just want to connect.
+            I focus on building scalable systems, clean code architecture, and
+            delivering seamless user experiences. Feel free to reach out if you
+            have any projects or just want to connect.
           </span>
         </p>
-
       </div>
       <div class="flex flex-col lg:flex-row gap-2 lg:gap-4">
         <div class="flex gap-2 lg:gap-4">
@@ -51,7 +58,11 @@ import MemojiAvatar from "../assets/me.webp";
               >
             </Button>
           </a>
-          <a href={LINKS.instagram} aria-label="instagram profile" target="_blank">
+          <a
+            href={LINKS.instagram}
+            aria-label="instagram profile"
+            target="_blank"
+          >
             <Button aria-label="instagram profile">
               <Icon name="ri:instagram-fill" class="h-6" />
               <span class="sr-only" data-umami-event="Instagram button"
@@ -73,17 +84,19 @@ import MemojiAvatar from "../assets/me.webp";
             data-umami-event="dark mode toggle"
           >
             <Icon name="ri:sun-line" class="h-4 w-4 dark-mode-icon sun-icon" />
-            <Icon name="ri:moon-line" class="h-4 w-4 dark-mode-icon moon-icon hidden" />
+            <Icon
+              name="ri:moon-line"
+              class="h-4 w-4 dark-mode-icon moon-icon hidden"
+            />
           </Button>
         </div>
       </div>
     </div>
     <Image
-
       quality="max"
-      src={MemojiAvatar}
-      class="w-auto max-h-[300px] select-none absolute right-[-110px] bottom-[-20px] z-[-1] opacity-50 md:opacity-100 md:relative md:right-auto md:bottom-auto md:z-auto pointer-events-none"
-      alt="memoji of sodiq"
+      src={SodiqAvatar}
+      class="w-auto max-h-[300px] select-none absolute right-[-40px] bottom-[-20px] z-[-1] opacity-50 md:opacity-100 md:relative md:right-auto md:bottom-auto md:z-auto pointer-events-none"
+      alt="foto sodiq"
     />
   </div>
 </Card>

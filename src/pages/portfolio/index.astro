@@ -42,11 +42,11 @@ const projects = (await getCollection("portfolio")).sort(
   description="A collection of my projects in web development, from Laravel APIs to React frontend applications."
 >
   <div
-    class="flex flex-col justify-center items-center p-4 pt-32 pb-20 min-h-screen"
+    class="flex flex-col justify-center items-center p-4 pt-24 sm:pt-32 pb-20 min-h-screen"
   >
     <a
       href="/"
-      class="flex items-center gap-2 w-fit text-white bg-neutral-900 hover:bg-neutral-800 px-4 py-2 border-1 border-solid border-neutral-600 rounded-lg absolute sm:fixed top-10 left-10 z-50 back-btn"
+      class="flex items-center gap-2 w-fit text-white bg-neutral-900 hover:bg-neutral-800 px-4 py-2 border-1 border-solid border-neutral-600 rounded-lg absolute sm:fixed top-6 sm:top-10 left-4 sm:left-10 z-50 back-btn"
     >
       <Icon name="ri:arrow-left-line" class="w-4 h-4" />Back
     </a>
@@ -169,29 +169,5 @@ const projects = (await getCollection("portfolio")).sort(
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-  }
-
-  :global(.light-mode) .text-white {
-    color: #111111 !important;
-  }
-
-  :global(.light-mode) .text-neutral-400 {
-    color: #6b6b6b !important;
-  }
-
-  :global(.light-mode) .text-neutral-300 {
-    color: #383838 !important;
-  }
-
-  :global(.light-mode) .text-neutral-500 {
-    color: #6b6b6b !important;
-  }
-
-  .back-btn {
-    color: #ffffff !important;
-  }
-
-  :global(.light-mode) .back-btn {
-    color: #ffffff !important;
   }
 </style>

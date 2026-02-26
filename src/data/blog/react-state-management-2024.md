@@ -4,6 +4,8 @@ description: "A practical comparison of state management solutions in React and 
 pubDate: 2024-12-03
 category: "frontend"
 draft: false
+image: "../../assets/illustrations/prospective.webp"
+imageAlt: "Illustration of React state management concepts"
 ---
 
 # React State Management in 2024: Context, Zustand, or TanStack Query?

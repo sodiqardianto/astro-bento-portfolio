@@ -1,5 +1,6 @@
 ---
 import { formatDate } from "../../lib/helpers";
+import Card from "../Card/index.astro";
 
 interface Props {
   title: string;
@@ -10,21 +11,34 @@ interface Props {
 const { title, date, id } = Astro.props;
 ---
 
-<li
-  class="list-none w-full text-neutral-100 hover:text-neutral-400 ease-in-out transition-colors border-b-neutral-400 border-dashed border-b-1 my-2"
->
-  <a
-    class="text-sm md:text-base decoration-none flex justify-between"
-    href={`/blog/${id}`}
+<li class="list-none w-full my-1">
+  <Card
+    colSpan="col-span-1"
+    rowSpan="row-span-1"
+    height="h-auto"
+    padding="px-6 py-4"
   >
-    <p class="inline-block whitespace-nowrap">
-      {title}
-    </p>
-    <time
-      class="text-right tabular-nums"
-      data-date={date.toISOString()}       datetime={date.toISOString()}
+    <a
+      href={`/blog/${id}`}
+      class="absolute inset-0 z-40"
+      aria-label={`Read ${title}`}></a>
+    <div
+      class="flex flex-col sm:flex-row justify-between sm:items-center h-full pointer-events-none gap-4"
     >
-      {formatDate(date)}
-    </time>
-  </a>
+      <h2
+        class="font-medium text-lg m-0 line-clamp-1 flex-grow pr-2 transition-colors group-hover:text-primary-500"
+      >
+        {title}
+      </h2>
+      <div class="flex">
+        <time
+          class="text-sm text-neutral-400 tabular-nums shrink-0"
+          data-date={date.toISOString()}
+          datetime={date.toISOString()}
+        >
+          {formatDate(date)}
+        </time>
+      </div>
+    </div>
+  </Card>
 </li>

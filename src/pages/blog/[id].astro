@@ -32,6 +32,8 @@ const { Content, remarkPluginFrontmatter } = await render(entry);
   pubDate={entry.data.pubDate!}
   title={`${entry.data.title} | Sodiq Ardianto`}
   url={`blog/${entry.id}`}
+  image={entry.data.image}
+  imageAlt={entry.data.imageAlt}
 >
   <Content />
 </LayoutBlogPost>
@@ -133,6 +135,35 @@ const { Content, remarkPluginFrontmatter } = await render(entry);
     height: auto;
     border-radius: 8px;
     margin: 16px 0;
+  }
+
+  .hero-image-wrapper {
+    width: 100%;
+    margin-bottom: 32px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .hero-image-wrapper:hover .hero-image {
+    transform: scale(1.02);
+  }
+
+  /* Light mode hero image */
+  :global(.light-mode) .hero-image-wrapper {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 0, 0, 0.08);
   }
 
   .blog-content table {

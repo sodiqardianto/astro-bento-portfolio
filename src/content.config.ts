@@ -1,11 +1,20 @@
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
-import { rssSchema } from "@astrojs/rss";
+
 import { z } from "astro:schema";
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/[^_]*.md", base: "./src/data/blog" }),
-  schema: rssSchema,
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      pubDate: z.coerce.date(),
+      category: z.string().optional(),
+      draft: z.boolean().optional(),
+      image: image().optional(),
+      imageAlt: z.string().optional(),
+    }),
 });
 
 const portfolio = defineCollection({

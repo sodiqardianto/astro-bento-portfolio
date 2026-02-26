@@ -12,10 +12,29 @@ const posts = (await getCollection("blog"))?.sort(
 ---
 
 <script>
-  import { animate, type AnimationSequence } from "motion";
+  import { stagger, animate, type AnimationSequence } from "motion";
   import { loaderAnimation } from "../../lib/constants";
 
-  const sequence = [loaderAnimation];
+  const header = document.querySelector(".blog-header");
+  const listItems = document.querySelectorAll(".blog-list-content ul > li");
+
+  const sequence = [
+    loaderAnimation,
+    [
+      header,
+      { y: ["40%", "0%"], opacity: [0, 1] },
+      { type: "spring", at: "-0.5" },
+    ],
+    [
+      listItems,
+      { y: ["40%", "0%"], opacity: [0, 1] },
+      {
+        type: "spring",
+        at: "-0.4",
+        delay: stagger(0.1),
+      },
+    ],
+  ];
 
   animate(sequence as AnimationSequence);
 </script>
@@ -24,26 +43,38 @@ const posts = (await getCollection("blog"))?.sort(
   description="Software developer with strong focus on the user experience animations and micro interactions"
   title="Sodiq Ardianto - Blog"
 >
-  <main
-    class="w-screen h-screen flex flex-col justify-start items-start max-w-3xl mx-auto p-8"
+  <div
+    class="blog-list-content flex flex-col justify-center items-center p-4 pt-24 sm:pt-32 pb-20 min-h-screen"
   >
     <a
       href="/"
-      class="flex items-center gap-2 w-fit text-white bg-neutral-900 hover:bg-neutral-800 px-4 py-2 mb-8 border-1 border-solid border-neutral-600 rounded-lg"
+      class="flex items-center gap-2 w-fit text-white bg-neutral-900 hover:bg-neutral-800 px-4 py-2 border-1 border-solid border-neutral-600 rounded-lg absolute sm:fixed top-6 sm:top-10 left-4 sm:left-10 z-50 back-btn"
     >
       <Icon name="ri:arrow-left-line" class="w-4 h-4" />Back
     </a>
-    <h1 class="text-4xl font-bold mb-4 text-neutral-100">Posts</h1>
-    <ul class="w-full">
-      {
-        posts?.map((post) => (
-          <PostRow
-            date={post.data.pubDate || new Date()}
-            id={post.id}
-            title={post.data.title || "No title"}
-          />
-        ))
-      }
-    </ul>
-  </main>
+
+    <!-- Header -->
+    <div class="blog-header max-w-6xl w-full mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Posts</h1>
+      <p class="text-neutral-400 text-lg max-w-2xl">
+        Thoughts, insights, and lessons learned about web development, UI/UX,
+        and building seamless digital experiences.
+      </p>
+    </div>
+
+    <!-- Posts List -->
+    <div class="max-w-6xl w-full">
+      <ul class="w-full flex flex-col gap-2">
+        {
+          posts?.map((post) => (
+            <PostRow
+              date={post.data.pubDate || new Date()}
+              id={post.id}
+              title={post.data.title || "No title"}
+            />
+          ))
+        }
+      </ul>
+    </div>
+  </div>
 </Layout>
