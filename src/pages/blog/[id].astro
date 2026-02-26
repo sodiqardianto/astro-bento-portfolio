@@ -30,105 +30,182 @@ const { Content, remarkPluginFrontmatter } = await render(entry);
   description={entry.data.description!}
   minutesRead={remarkPluginFrontmatter.minutesRead}
   pubDate={entry.data.pubDate!}
-  title={`${entry.data.title} | Gianmarco Cavallo`}
+  title={`${entry.data.title} | Sodiq Ardianto`}
   url={`blog/${entry.id}`}
 >
   <Content />
 </LayoutBlogPost>
 
 <style is:global>
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-weight: bold;
+  .blog-content {
+    color: #e3e3e3;
   }
 
-  h1 {
+  .blog-content h1,
+  .blog-content h2,
+  .blog-content h3,
+  .blog-content h4,
+  .blog-content h5,
+  .blog-content h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  .blog-content h1 {
     font-size: 32px;
   }
 
-  h2 {
-    font-size: 28px;
-  }
-
-  h3 {
+  .blog-content h2 {
     font-size: 24px;
   }
 
-  h4 {
+  .blog-content h3 {
     font-size: 20px;
   }
 
-  h5 {
-    font-size: 18px;
+  .blog-content p {
+    margin: 0 0 16px 0;
+    line-height: 1.7;
+    color: #e3e3e3;
   }
 
-  h6 {
-    font-size: 16px;
-  }
-
-  p {
-    margin: 0 0 10px 0;
-  }
-
-  a {
-    color: #1a0dab;
+  .blog-content a {
+    color: var(--primary-500);
     text-decoration: none;
   }
 
-  a:hover {
+  .blog-content a:hover {
     text-decoration: underline;
   }
 
-  ul,
-  ol {
-    margin-left: 20px;
-    margin-bottom: 10px;
+  .blog-content ul,
+  .blog-content ol {
+    margin-left: 24px;
+    margin-bottom: 16px;
+    color: #e3e3e3;
   }
 
-  blockquote {
+  .blog-content li {
+    margin-bottom: 8px;
+  }
+
+  .blog-content blockquote {
     margin: 20px 0;
-    padding-left: 15px;
-    border-left: 5px solid #ccc;
+    padding: 12px 20px;
+    border-left: 4px solid var(--primary-500);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 0 8px 8px 0;
   }
 
-  pre,
-  code {
+  .blog-content blockquote p {
+    margin: 0;
+  }
+
+  .blog-content pre {
     font-family: "Courier New", monospace;
-    background-color: #f4f4f4;
-    border-radius: 5px;
-  }
-
-  pre {
-    padding: 10px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    padding: 16px;
     overflow-x: auto;
+    margin: 16px 0;
+    border: 1px solid #333;
   }
 
-  code {
-    padding: 2px 4px;
+  .blog-content code {
+    font-family: "Courier New", monospace;
+    background-color: rgba(230, 57, 70, 0.15);
+    color: var(--primary-400);
+    padding: 2px 6px;
+    border-radius: 4px;
     font-size: 90%;
-    color: #d63384;
   }
 
-  img {
+  .blog-content pre code {
+    background-color: transparent;
+    color: #e3e3e3;
+    padding: 0;
+  }
+
+  .blog-content img {
     max-width: 100%;
     height: auto;
+    border-radius: 8px;
+    margin: 16px 0;
   }
 
-  table {
+  .blog-content table {
     border-collapse: collapse;
     width: 100%;
+    margin: 16px 0;
   }
 
-  th,
-  td {
+  .blog-content th,
+  .blog-content td {
     text-align: left;
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
+    padding: 12px;
+    border-bottom: 1px solid #333;
+  }
+
+  .blog-content th {
+    background-color: rgba(255, 255, 255, 0.05);
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  /* Light mode styles */
+  .light-mode .blog-content {
+    color: #383838;
+  }
+
+  .light-mode .blog-content h1,
+  .light-mode .blog-content h2,
+  .light-mode .blog-content h3,
+  .light-mode .blog-content h4,
+  .light-mode .blog-content h5,
+  .light-mode .blog-content h6 {
+    color: #111111;
+  }
+
+  .light-mode .blog-content p,
+  .light-mode .blog-content li {
+    color: #383838;
+  }
+
+  .light-mode .blog-content pre {
+    background-color: #f4f4f4;
+    border-color: #ddd;
+  }
+
+  .light-mode .blog-content pre code {
+    color: #333;
+  }
+
+  .light-mode .blog-content blockquote {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  .light-mode .blog-content th,
+  .light-mode .blog-content td {
+    border-bottom-color: #ddd;
+  }
+
+  .light-mode .blog-content th {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  /* Bento footer card - light mode */
+  .light-mode .mt-12.bg-darkslate-500 {
+    background-color: var(--darkslate-500);
+    border-color: var(--darkslate-400);
+  }
+
+  .light-mode .mt-12 .text-neutral-100 {
+    color: #111111;
+  }
+
+  .light-mode .mt-12 .text-neutral-400 {
+    color: #6b6b6b;
   }
 </style>

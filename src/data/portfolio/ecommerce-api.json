@@ -1,0 +1,18 @@
+{
+  "id": "ecommerce-api",
+  "title": "E-Commerce API",
+  "description": "RESTful API untuk platform e-commerce dengan fitur payment gateway, inventory management, dan real-time notification.",
+  "fullDescription": "Sebuah RESTful API yang dibangun dengan Laravel untuk mendukung operasi e-commerce yang skalabel dan aman.\n\nAPI ini menangani berbagai aspek penting dari platform e-commerce termasuk manajemen produk dan kategori, sistem keranjang belanja dan checkout, integrasi payment gateway (Midtrans, Xendit), manajemen inventori real-time, notifikasi real-time dengan WebSocket, dan API documentation dengan Swagger.\n\nTeknologi utama yang digunakan adalah Laravel 10, MySQL untuk database, Redis untuk caching dan queue, serta Docker untuk deployment.",
+  "tags": ["Laravel", "MySQL", "Redis", "REST API", "Docker", "Swagger"],
+  "link": "https://api-demo.sodiqardianto.com",
+  "github": "https://github.com/sodiqardianto/ecommerce-api",
+  "year": "2024",
+  "features": [
+    "Authentication dengan JWT dan OAuth2",
+    "Payment gateway integration (Midtrans, Xendit)",
+    "Real-time inventory tracking",
+    "Email dan push notification",
+    "API rate limiting dan throttling",
+    "Comprehensive API documentation"
+  ]
+}

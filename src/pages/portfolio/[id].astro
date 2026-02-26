@@ -1,0 +1,236 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const projects = await getCollection("portfolio");
+  return projects.map((project) => ({
+    params: { id: project.id },
+  }));
+}
+
+const { id } = Astro.params;
+if (!id) return Astro.redirect("/portfolio");
+
+const project = await getEntry("portfolio", id);
+
+if (!project) {
+  return Astro.redirect("/portfolio");
+}
+
+const { data } = project;
+---
+
+<script>
+  import { animate, type AnimationSequence } from "motion";
+  import { loaderAnimation } from "../../lib/constants";
+
+  animate([loaderAnimation] as AnimationSequence);
+</script>
+
+<Layout title={`${data.title} | Sodiq Ardianto`} description={data.description}>
+  <div
+    class="flex flex-col justify-center items-center p-4 pt-32 pb-20 min-h-screen"
+  >
+    <a
+      href="/portfolio"
+      class="flex items-center gap-2 w-fit back-btn fixed top-10 left-10 bg-neutral-900 hover:bg-neutral-800 px-4 py-2 border-1 border-solid border-neutral-600 rounded-lg z-50"
+    >
+      <Icon name="ri:arrow-left-line" class="w-4 h-4" /> Back to Portfolio
+    </a>
+
+    <div class="max-w-4xl w-full">
+      {/* Header */}
+      <div class="mb-8">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-sm text-neutral-500">{data.year}</span>
+          <span class="text-neutral-600">·</span>
+          <div class="flex gap-2">
+            {
+              data.tags
+                .slice(0, 3)
+                .map((tag) => (
+                  <span class="text-xs px-2 py-1 bg-darkslate-400/50 text-neutral-300 rounded">
+                    {tag}
+                  </span>
+                ))
+            }
+          </div>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+          {data.title}
+        </h1>
+        <p class="text-lg text-neutral-400">
+          {data.description}
+        </p>
+      </div>
+
+      {
+        data.image && (
+          <div class="mb-10 w-full overflow-hidden rounded-xl border border-darkslate-400">
+            <Image
+              src={data.image}
+              alt={data.title}
+              class="w-full h-auto object-cover max-h-[500px]"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+        )
+      }
+
+      {/* Action Buttons */}
+      <div class="flex gap-4 mb-10">
+        {
+          data.link && (
+            <a
+              href={data.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg transition-colors"
+            >
+              <Icon name="ri:external-link-line" class="w-5 h-5" />
+              <span>Visit Live Site</span>
+            </a>
+          )
+        }
+        {
+          data.github && (
+            <a
+              href={data.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 px-6 py-3 bg-darkslate-500 hover:bg-darkslate-400 border border-darkslate-400 text-white rounded-lg transition-colors"
+            >
+              <Icon name="ri:github-fill" class="w-5 h-5" />
+              <span>View Code</span>
+            </a>
+          )
+        }
+      </div>
+
+      {/* Full Description */}
+      <div
+        class="bg-darkslate-500 rounded-lg border border-darkslate-400 p-8 mb-8"
+      >
+        <h2 class="text-2xl font-bold text-white mb-4">About the Project</h2>
+        <div class="text-neutral-300 leading-relaxed space-y-4">
+          {
+            data.fullDescription
+              .split("\n\n")
+              .map((paragraph) => <p>{paragraph}</p>)
+          }
+        </div>
+      </div>
+
+      {/* Tech Stack */}
+      <div
+        class="bg-darkslate-500 rounded-lg border border-darkslate-400 p-8 mb-8"
+      >
+        <h2 class="text-2xl font-bold text-white mb-4">Tech Stack</h2>
+        <div class="flex flex-wrap gap-3">
+          {
+            data.tags.map((tag) => (
+              <span class="px-4 py-2 bg-darkslate-400/50 text-neutral-200 rounded-lg text-sm">
+                {tag}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+
+      {/* Key Features */}
+      <div class="bg-darkslate-500 rounded-lg border border-darkslate-400 p-8">
+        <h2 class="text-2xl font-bold text-white mb-4">Key Features</h2>
+        <ul class="space-y-3">
+          {
+            data.features.map((feature) => (
+              <li class="flex items-start gap-3 text-neutral-300">
+                <span class="text-primary-400 mt-1">✓</span>
+                <span>{feature}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      {/* Bento-style Footer Card */}
+      <div
+        class="mt-12 p-6 bg-darkslate-500 rounded-lg border border-darkslate-400"
+      >
+        <div
+          class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
+        >
+          <div>
+            <p class="text-sm font-medium text-neutral-100">
+              Developed by Sodiq Ardianto
+            </p>
+            <p class="text-xs text-neutral-400 mt-1">
+              Project Year · {data.year}
+            </p>
+          </div>
+          <a
+            href="/portfolio"
+            class="text-sm text-primary-400 hover:text-primary-300 transition-colors flex items-center gap-1"
+          >
+            <span>←</span>
+            <span>Back to all portfolio</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .back-btn {
+    color: #ffffff !important;
+  }
+
+  :global(.light-mode) .back-btn {
+    color: #ffffff !important;
+  }
+
+  :global(.light-mode) h1,
+  :global(.light-mode) h2 {
+    color: #111111 !important;
+  }
+
+  :global(.light-mode) .text-white {
+    color: #111111 !important;
+  }
+
+  :global(.light-mode) .text-neutral-400 {
+    color: #6b6b6b !important;
+  }
+
+  :global(.light-mode) .text-neutral-300 {
+    color: #383838 !important;
+  }
+
+  :global(.light-mode) .text-neutral-500 {
+    color: #6b6b6b !important;
+  }
+
+  :global(.light-mode) .text-neutral-200 {
+    color: #111111 !important;
+  }
+
+  :global(.light-mode) .text-neutral-600 {
+    color: #9a9a9a !important;
+  }
+
+  :global(.light-mode) .bg-darkslate-500 {
+    background-color: #f5f5f5 !important;
+    border-color: #e0e0e0 !important;
+  }
+
+  :global(.light-mode) .bg-darkslate-400\\/50,
+  :global(.light-mode) .bg-darkslate-400\/50 {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+  }
+</style>

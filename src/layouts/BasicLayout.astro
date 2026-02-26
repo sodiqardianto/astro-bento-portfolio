@@ -21,23 +21,23 @@ const schema =
     ? {
         "@context": "http://schema.org",
         "@type": "Person",
-        name: "Gianmarco",
+        name: "Sodiq Ardianto",
         url: Astro.url.origin,
         sameAs: [LINKS.linkedin, LINKS.github],
         image: `${Astro.url.origin}/og-image.png`,
-        jobTitle: "Freelance Frontend Developer",
+        jobTitle: "Fullstack Developer",
         worksFor: {
           "@type": "Organization",
           name: "Self-Employed",
           address: {
             "@type": "PostalAddress",
-            addressLocality: "Italy",
-            addressCountry: "IT",
+            addressLocality: "Jakarta",
+            addressCountry: "ID",
           },
         },
         nationality: {
           "@type": "Country",
-          name: "Italy",
+          name: "Indonesia",
         },
       }
     : {
@@ -52,13 +52,13 @@ const schema =
         image: `${Astro.url.origin}/og-image.png`, //TODO: dynamic
         author: {
           "@type": "Person",
-          name: "Gianmarco",
+          name: "Sodiq Ardianto",
           url: Astro.url.origin,
           sameAs: [LINKS.linkedin, LINKS.github],
         },
         publisher: {
           "@type": "Organization",
-          name: "Gianmarco",
+          name: "Sodiq Ardianto",
           logo: {
             "@type": "ImageObject",
             url: `${Astro.url.origin}/og-image.png`,
@@ -104,68 +104,25 @@ const schema =
       set:html={JSON.stringify(schema)}
       type="application/ld+json"
     />
-    <script
-      defer
-      is:inline
-      src="https://cloud.umami.is/script.js"
-      data-website-id={import.meta.env.UMAMI_WEBSITE_ID}></script>
-    <script
-      src="https://analytics.ahrefs.com/analytics.js"
-      data-key={import.meta.env.AHREFS_ANALYTICS_KEY}
-      async></script>
-
-    <!-- Cal element-click embed code begins -->
-    <script is:inline type="text/javascript">
-      (function (C, A, L) {
-        let p = function (a, ar) {
-          a.q.push(ar);
-        };
-        let d = C.document;
-        C.Cal =
-          C.Cal ||
-          function () {
-            let cal = C.Cal;
-            let ar = arguments;
-            if (!cal.loaded) {
-              cal.ns = {};
-              cal.q = cal.q || [];
-              d.head.appendChild(d.createElement("script")).src = A;
-              cal.loaded = true;
-            }
-            if (ar[0] === L) {
-              const api = function () {
-                p(api, arguments);
-              };
-              const namespace = ar[1];
-              api.q = api.q || [];
-              if (typeof namespace === "string") {
-                cal.ns[namespace] = cal.ns[namespace] || api;
-                p(cal.ns[namespace], ar);
-                p(cal, ["initNamespace", namespace]);
-              } else p(cal, ar);
-              return;
-            }
-            p(cal, ar);
-          };
-      })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", "15min", { origin: "https://cal.com" });
-
-      // Important: Please add the following attributes to the element that should trigger the calendar to open upon clicking.
-      // `data-cal-link="ladvace/15min"`
-      // data-cal-namespace="15min"
-      // `data-cal-config='{"layout":"month_view"}'`
-
-      Cal.ns["15min"]("ui", {
-        styles: { branding: { brandColor: "#000000" } },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    </script>
-    <!-- Cal element-click embed code ends -->
+    <!-- Analytics scripts removed - add your own analytics here -->
   </head>
   <body class="bg-darkslate-700 flex flex-col justify-center items-center">
     <slot name="loader" />
     <slot />
+    
+    <script>
+      // Apply theme from localStorage on all pages
+      const theme = localStorage.getItem("theme");
+      const darkMode = localStorage.getItem("darkMode");
+
+      if (theme) document.body.classList.add(theme);
+
+      if (darkMode === "light") {
+        document.body.classList.add("light-mode");
+      } else {
+        document.body.classList.remove("light-mode");
+      }
+    </script>
   </body>
 </html>
 

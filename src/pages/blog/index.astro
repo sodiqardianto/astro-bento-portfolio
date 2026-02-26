@@ -1,12 +1,13 @@
 ---
 import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
 import Layout from "../../layouts/Layout.astro";
 import PostRow from "../../components/Blog/PostRow.astro";
 
 const posts = (await getCollection("blog"))?.sort(
   (blogEntryA, blogEntryB) =>
     (blogEntryB.data.pubDate || new Date()).getTime() -
-    (blogEntryA.data.pubDate || new Date()).getTime()
+    (blogEntryA.data.pubDate || new Date()).getTime(),
 );
 ---
 
@@ -21,15 +22,17 @@ const posts = (await getCollection("blog"))?.sort(
 
 <Layout
   description="Software developer with strong focus on the user experience animations and micro interactions"
-  title="Gianmarco Cavallo - Blog"
+  title="Sodiq Ardianto - Blog"
 >
   <main
     class="w-screen h-screen flex flex-col justify-start items-start max-w-3xl mx-auto p-8"
   >
     <a
-      class="text-white bg-neutral-900 hover:bg-neutral-800 px-4 py-2 mb-8 border-1 border-solid border-neutral-600 rounded-lg"
-      href="/">Back</a
+      href="/"
+      class="flex items-center gap-2 w-fit text-white bg-neutral-900 hover:bg-neutral-800 px-4 py-2 mb-8 border-1 border-solid border-neutral-600 rounded-lg"
     >
+      <Icon name="ri:arrow-left-line" class="w-4 h-4" />Back
+    </a>
     <h1 class="text-4xl font-bold mb-4 text-neutral-100">Posts</h1>
     <ul class="w-full">
       {

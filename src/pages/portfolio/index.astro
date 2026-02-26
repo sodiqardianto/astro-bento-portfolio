@@ -1,0 +1,197 @@
+---
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card/index.astro";
+
+const projects = (await getCollection("portfolio")).sort(
+  (a, b) => parseInt(b.data.year) - parseInt(a.data.year),
+);
+---
+
+<script>
+  import { stagger, animate, type AnimationSequence } from "motion";
+  import { loaderAnimation } from "../../lib/constants";
+
+  const cards = document.querySelectorAll(".card");
+  const header = document.querySelector(".portfolio-header");
+
+  const sequence = [
+    loaderAnimation,
+    [
+      header,
+      { y: ["40%", "0%"], opacity: [0, 1] },
+      { type: "spring", at: "-0.5" },
+    ],
+    [
+      cards,
+      { y: ["40%", "0%"], opacity: [0, 1] },
+      {
+        type: "spring",
+        at: "-0.4", // start slightly before the header finishes
+        delay: stagger(0.1), // faster stagger for lists
+      },
+    ],
+  ];
+
+  animate(sequence as AnimationSequence);
+</script>
+
+<Layout
+  title="Sodiq Ardianto - Portfolio"
+  description="A collection of my projects in web development, from Laravel APIs to React frontend applications."
+>
+  <div
+    class="flex flex-col justify-center items-center p-4 pt-32 pb-20 min-h-screen"
+  >
+    <a
+      href="/"
+      class="flex items-center gap-2 w-fit text-white bg-neutral-900 hover:bg-neutral-800 px-4 py-2 border-1 border-solid border-neutral-600 rounded-lg absolute sm:fixed top-10 left-10 z-50 back-btn"
+    >
+      <Icon name="ri:arrow-left-line" class="w-4 h-4" />Back
+    </a>
+
+    <!-- Header -->
+    <div class="portfolio-header max-w-6xl w-full mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Portfolio</h1>
+      <p class="text-neutral-400 text-lg max-w-2xl">
+        A collection of my work in web development, ranging from backend APIs to
+        full-stack applications. Each project represents a unique challenge and
+        learning experience.
+      </p>
+    </div>
+
+    <!-- Projects Grid -->
+    <div
+      class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+    >
+      {
+        projects.map((project) => (
+          <Card
+            title={project.data.title}
+            colSpan="md:col-span-1"
+            rowSpan="md:row-span-1"
+            height="h-auto"
+            padding="p-6"
+          >
+            <a
+              href={`/portfolio/${project.id}`}
+              class="absolute inset-0 z-40"
+              aria-label={`View details for ${project.data.title}`}
+            />
+            <div class="flex flex-col h-full">
+              {/* Year */}
+              <div class="flex justify-end mb-3">
+                <span class="text-xs text-neutral-500">
+                  {project.data.year}
+                </span>
+              </div>
+
+              {/* Description */}
+              <p class="text-sm text-neutral-300 mb-4 flex-grow line-clamp-3">
+                {project.data.description}
+              </p>
+
+              {/* Tags */}
+              <div class="flex flex-wrap gap-2 mb-4">
+                {project.data.tags.slice(0, 4).map((tag) => (
+                  <span class="text-xs px-2 py-1 bg-darkslate-400/50 text-neutral-300 rounded">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* Action Buttons */}
+              <div class="flex gap-3 pt-4 pb-4 border-t border-darkslate-400 relative z-50 pointer-events-none">
+                {project.data.link && (
+                  <a
+                    href={project.data.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-1.5 text-sm text-neutral-400 hover:text-neutral-200 transition-colors pointer-events-auto"
+                  >
+                    <Icon name="ri:external-link-line" class="w-4 h-4" />
+                    <span>Visit</span>
+                  </a>
+                )}
+                {project.data.github && (
+                  <a
+                    href={project.data.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-1.5 text-sm text-neutral-400 hover:text-neutral-200 transition-colors pointer-events-auto"
+                  >
+                    <Icon name="ri:github-fill" class="w-4 h-4" />
+                    <span>Code</span>
+                  </a>
+                )}
+              </div>
+            </div>
+          </Card>
+        ))
+      }
+    </div>
+
+    {/* CTA Section */}
+    <div class="max-w-6xl w-full mt-12">
+      <Card
+        colSpan="md:col-span-full"
+        height="h-auto"
+        bgColor="bg-darkslate-500"
+      >
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-4 p-2"
+        >
+          <div>
+            <h3 class="text-xl font-semibold text-white mb-1">
+              Interested in collaborating?
+            </h3>
+            <p class="text-sm text-neutral-400">
+              I'm always open to discussing new projects and opportunities.
+            </p>
+          </div>
+          <a
+            href="mailto:gmail@sodiqardianto.com"
+            class="flex items-center gap-2 px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg transition-colors"
+          >
+            <Icon name="ri:mail-line" class="w-5 h-5" />
+            <span>Get in Touch</span>
+          </a>
+        </div>
+      </Card>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  :global(.light-mode) .text-white {
+    color: #111111 !important;
+  }
+
+  :global(.light-mode) .text-neutral-400 {
+    color: #6b6b6b !important;
+  }
+
+  :global(.light-mode) .text-neutral-300 {
+    color: #383838 !important;
+  }
+
+  :global(.light-mode) .text-neutral-500 {
+    color: #6b6b6b !important;
+  }
+
+  .back-btn {
+    color: #ffffff !important;
+  }
+
+  :global(.light-mode) .back-btn {
+    color: #ffffff !important;
+  }
+</style>

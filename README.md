@@ -6,7 +6,7 @@
 
 To view a demo example, **[click here](https://sparkly-speculoos-0c9197.netlify.app/)**
 
-or my portfolio **[click here](https://gianmarcocavallo.com/)**
+or my portfolio **[click here](https://sodiqardianto.com/)**
 
 ## Features
 
@@ -52,9 +52,9 @@ or
 $ npm run dev
 ```
 
-# Be sure to replace the momoji and all the relative information, such as email, website and other info, if you don't your website is gonna point to my domain and to my info
 
-## REMOVE THE umami analytics script tag (or replace it with your id) in `src/layouts/Layout.astro`
+
+
 
 # Configuration
 
@@ -72,4 +72,7 @@ or
 
 ## Authors ❤️
 
-- Gianmarco - https://github.com/Ladvace
+- Sodiq Ardianto - https://github.com/sodiqardianto
+- Template by Gianmarco Cavallo - https://github.com/Ladvace
+
+See [CREDITS.md](./CREDITS.md) for more details.

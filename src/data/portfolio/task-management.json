@@ -1,0 +1,19 @@
+{
+  "id": "task-management",
+  "image": "../../assets/illustrations/landscape_1.webp",
+  "title": "Task Management App",
+  "description": "Aplikasi manajemen tugas tim dengan real-time collaboration dan drag-and-drop kanban board.",
+  "fullDescription": "Aplikasi web untuk manajemen proyek dan tugas tim yang dibangun dengan React dan TypeScript.\n\nFitur utama mencakup Kanban board dengan drag-and-drop, real-time collaboration menggunakan Socket.io, sistem notifikasi dan reminder, time tracking untuk setiap tugas, file attachment dan comment system, serta dark mode support.\n\nAplikasi ini dirancang untuk meningkatkan produktivitas tim dengan interface yang intuitif dan responsive.",
+  "tags": ["React", "TypeScript", "Tailwind", "Socket.io", "Node.js", "MongoDB"],
+  "link": "https://tasks.sodiqardianto.com",
+  "github": "https://github.com/sodiqardianto/task-management",
+  "year": "2024",
+  "features": [
+    "Drag-and-drop kanban board",
+    "Real-time collaboration",
+    "Team workspace dan permission",
+    "Due date dan reminder",
+    "Activity log dan audit trail",
+    "Export data ke CSV/PDF"
+  ]
+}

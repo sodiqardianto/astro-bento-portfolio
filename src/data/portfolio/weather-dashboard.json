@@ -1,0 +1,18 @@
+{
+  "id": "weather-dashboard",
+  "title": "Weather Dashboard",
+  "description": "Dashboard cuaca real-time dengan visualisasi data menggunakan D3.js dan integrasi OpenWeatherMap API.",
+  "fullDescription": "Dashboard cuaca interaktif yang menampilkan data cuaca real-time dengan visualisasi yang menarik menggunakan D3.js.\n\nFitur unggulan meliputi pencarian lokasi global, visualisasi data cuaca dengan chart interaktif, prediksi cuaca 7 hari ke depan, sistem favorit untuk menyimpan lokasi, PWA support untuk instalasi di mobile, dan offline mode dengan service worker.\n\nProject ini menunjukkan kemampuan dalam mengintegrasikan third-party API dan membuat visualisasi data yang informatif.",
+  "tags": ["React", "D3.js", "API Integration", "PWA", "Service Worker"],
+  "link": "https://weather.sodiqardianto.com",
+  "github": "https://github.com/sodiqardianto/weather-dashboard",
+  "year": "2023",
+  "features": [
+    "Real-time weather data",
+    "Interactive D3.js charts",
+    "7-day forecast",
+    "Location favorites",
+    "PWA dengan offline support",
+    "Responsive design"
+  ]
+}
