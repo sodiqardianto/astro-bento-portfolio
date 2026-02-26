@@ -17,6 +17,9 @@ type Props = {
 
 const { title, description, pubDate, minutesRead, url, image, imageAlt } =
   Astro.props;
+
+// Build absolute OG image URL if hero image exists
+const ogImage = image ? `${Astro.url.origin}${image.src}` : undefined;
 ---
 
 <script>
@@ -43,7 +46,13 @@ const { title, description, pubDate, minutesRead, url, image, imageAlt } =
   animate(sequence as AnimationSequence);
 </script>
 
-<BasicLayout description={description} page="blog" slug={url} title={title}>
+<BasicLayout
+  description={description}
+  page="blog"
+  slug={url}
+  title={title}
+  ogImage={ogImage}
+>
   <main
     class="blog-detail-content mx-auto max-w-3xl w-full min-h-screen p-4 md:p-8 pt-32 pb-20 text-neutral-100"
   >

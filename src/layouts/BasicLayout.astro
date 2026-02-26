@@ -5,16 +5,14 @@ import { LINKS } from "../lib/constants";
 interface Props {
   title: string;
   description: string;
-  page?: "travel" | "blog";
+  page?: "blog" | "portfolio";
   slug?: string | undefined;
   pubDate?: string;
+  ogImage?: string;
 }
 
-const { title, description, page, pubDate } = Astro.props;
-const image =
-  page === "travel"
-    ? `${Astro.url.origin}/globe_preview.webp"`
-    : `${Astro.url.origin}/og-image.png`;
+const { title, description, page, pubDate, ogImage } = Astro.props;
+const image = ogImage ?? `${Astro.url.origin}/og-image.png`;
 
 const schema =
   page !== "blog"
@@ -49,7 +47,7 @@ const schema =
         },
         headline: title || title,
         description: description || title,
-        image: `${Astro.url.origin}/og-image.png`, //TODO: dynamic
+        image: ogImage ?? `${Astro.url.origin}/og-image.png`,
         author: {
           "@type": "Person",
           name: "Sodiq Ardianto",
@@ -69,7 +67,7 @@ const schema =
       };
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -103,13 +101,13 @@ const schema =
       is:inline
       set:html={JSON.stringify(schema)}
       type="application/ld+json"
-    />
+    ></script>
     <!-- Analytics scripts removed - add your own analytics here -->
   </head>
   <body class="bg-darkslate-700 flex flex-col justify-center items-center">
     <slot name="loader" />
     <slot />
-    
+
     <script>
       // Apply theme from localStorage on all pages
       const theme = localStorage.getItem("theme");
