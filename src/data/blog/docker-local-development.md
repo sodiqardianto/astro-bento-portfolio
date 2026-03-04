@@ -21,7 +21,7 @@ Switching between them was a nightmare. PHP version managers helped, but databas
 
 ## My Current Docker Setup
 
-I now use Docker Compose for all projects. Here's a typical `docker-compose.yml` for my Laravel projects:
+I now use Docker Compose for all projects. Here's a typical `docker compose.yml` for my Laravel projects:
 
 ```yaml
 version: '3.8'
@@ -78,7 +78,7 @@ New team member onboarding is now:
 ```bash
 git clone <repo>
 cd project
-docker-compose up -d
+docker compose up -d
 ```
 
 No more "install PHP, then MySQL, then Redis, then..."
@@ -124,17 +124,17 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 Created some handy aliases in my `.zshrc`:
 
 ```bash
-alias dcu="docker-compose up -d"
-alias dcd="docker-compose down"
-alias dcr="docker-compose restart"
-alias dce="docker-compose exec app"
-alias dcl="docker-compose logs -f"
+alias dcu="docker compose up -d"
+alias dcd="docker compose down"
+alias dcr="docker compose restart"
+alias dce="docker compose exec app"
+alias dcl="docker compose logs -f"
 ```
 
 Running artisan commands:
 ```bash
-docker-compose exec app php artisan migrate
-docker-compose exec app php artisan tinker
+docker compose exec app php artisan migrate
+docker compose exec app php artisan tinker
 ```
 
 ## The Learning Curve
@@ -148,6 +148,6 @@ But the benefits far outweigh the initial learning investment.
 
 ## My Recommendation
 
-If you're still managing local dependencies manually, give Docker a try. Start with a simple `docker-compose.yml` for your next project. You might struggle for the first few days, but you'll thank yourself later.
+If you're still managing local dependencies manually, give Docker a try. Start with a simple `docker compose.yml` for your next project. You might struggle for the first few days, but you'll thank yourself later.
 
 Have you Dockerized your dev environment? What challenges did you face?

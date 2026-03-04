@@ -1,7 +1,7 @@
 ---
 title: "Building Scalable API with Laravel: Lessons Learned"
 description: "Practical insights on structuring large-scale Laravel APIs with clean architecture, repository pattern, and proper error handling."
-pubDate: 2024-11-15
+pubDate: 2026-03-02
 category: "backend"
 draft: false
 ---

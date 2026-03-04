@@ -16,23 +16,25 @@ import SodiqAvatar from "../assets/sodiq.png";
           <h6 class="text-sm font-light m-0 text-darkslate-300">welcome</h6>
         </div>
         <p class="sr-only">
-          Hi, I'm Sodiq Ardianto, a Fullstack Developer specializing in Laravel
-          for backend and React/Next.js for frontend. I focus on building
-          scalable systems, clean code architecture, and delivering seamless
-          user experiences. Feel free to reach out if you have any projects or
-          just want to connect.
+          Hi, I'm Sodiq Ardianto, a Software Developer specializing in Laravel
+          and Express for backend, React/Next.js for web frontend, and Flutter
+          for mobile development. I focus on building scalable systems, clean
+          code architecture leveraging DRY and SOLID principles, and delivering
+          seamless user experiences. Enthusiastic about environments powered by
+          Linux, Docker, and PostgreSQL.
         </p>
         <p aria-hidden="true" class="m-0 font-light text-md intro-text">
           <span>
-            Hi, I'm <b class="font-bold">Sodiq Ardianto</b>, a fullstack
-            developer specializing in Laravel for backend and React/Next.js for
-            frontend.
+            Hi, I'm <b class="font-bold">Sodiq Ardianto</b>, a software
+            developer specializing in Laravel, Express, React/Next.js, and
+            Flutter.
           </span>
           <br />
           <span class="block mt-2">
-            I focus on building scalable systems, clean code architecture, and
-            delivering seamless user experiences. Feel free to reach out if you
-            have any projects or just want to connect.
+            I focus on building scalable systems and crafting clean architecture
+            that follows SOLID and DRY practices naturally to deliver seamless
+            user experiences. Experienced with environments powered by Linux,
+            Docker, and PostgreSQL.
           </span>
         </p>
       </div>
@@ -108,7 +110,13 @@ import SodiqAvatar from "../assets/sodiq.png";
     const moonIcon = document.querySelector(".moon-icon");
 
     // Check for saved theme preference or default to dark mode
-    const currentTheme = localStorage.getItem("darkMode") || "dark";
+    let currentTheme = localStorage.getItem("darkMode");
+
+    if (!currentTheme) {
+      currentTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    }
 
     // Apply the theme on page load
     if (currentTheme === "light") {

@@ -23,7 +23,7 @@ const schema =
         url: Astro.url.origin,
         sameAs: [LINKS.linkedin, LINKS.github],
         image: `${Astro.url.origin}/og-image.png`,
-        jobTitle: "Fullstack Developer",
+        jobTitle: "Software Developer",
         worksFor: {
           "@type": "Organization",
           name: "Self-Employed",
@@ -111,7 +111,13 @@ const schema =
     <script>
       // Apply theme from localStorage on all pages
       const theme = localStorage.getItem("theme");
-      const darkMode = localStorage.getItem("darkMode");
+      let darkMode = localStorage.getItem("darkMode");
+
+      if (!darkMode) {
+        darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      }
 
       if (theme) document.body.classList.add(theme);
 

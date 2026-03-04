@@ -1,0 +1,20 @@
+{
+  "id": "econsent",
+  "title": "E-Consent Platform",
+  "description": "An electronic consent management platform built with TypeScript to facilitate secure and reliable digital approval processes.",
+  "fullDescription": "E-Consent is a comprehensive platform for managing and processing electronic consent digitally and securely.\n\nThe platform is designed to facilitate complex approval processes with support for multiple stakeholders, complete audit trails, and encrypted documentation. The system integrates cutting-edge technology to ensure security, regulatory compliance, and optimal user experience.\n\nBuilt with TypeScript for type safety and maintainability, this application provides an end-to-end solution for digital consent management with enterprise-grade features.",
+  "tags": ["TypeScript", "E-Consent", "Digital Signature", "Document Management", "Security", "Compliance"],
+  "link": "",
+  "github": "",
+  "year": "2025",
+  "features": [
+    "Electronic consent management and processing",
+    "Digital signature integration",
+    "Complete audit trails and compliance logging",
+    "Multi-stakeholder workflow support",
+    "Document encryption and secure storage",
+    "Real-time consent tracking and monitoring",
+    "User authentication and role-based authorization",
+    "API documentation and integration support"
+  ]
+}

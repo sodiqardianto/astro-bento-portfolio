@@ -69,9 +69,15 @@ body {
 }
 
 .light-mode p,
-.light-mode span,
+.light-mode span:not(pre span),
 .light-mode div {
   color: #383838;
+}
+
+/* Fix text contrast inside code blocks (like plain text / terminal outputs) */
+.light-mode .astro-code,
+.light-mode .astro-code span {
+  color: #e3e3e3;
 }
 
 /* Global utility class overrides for light mode */
